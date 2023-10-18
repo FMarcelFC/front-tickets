@@ -1,0 +1,44 @@
+<div class="container-fluid min-h-full mx-auto">
+    <div class="flex justify-center items-center h-screen">
+        <form [formGroup]="form" (ngSubmit)="login()">
+            <mat-card class="text-center p-6">
+                <mat-card-header>
+                    <h1 class="text-lg font-semibold">Sistema de Registro de Tickets</h1>
+                    <img src="assets/logo.png" width="95" class="mx-auto my-8" alt="" />
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="email" matInput name="email" autocomplete="off"
+                            placeholder="example@mail.com" />
+                        <mat-error *ngIf="form.controls['email'].hasError('required')">
+                            El folio es <strong> requerido </strong>
+                        </mat-error>
+                        <mat-error *ngIf="form.controls['email'].hasError('email')">El correo electrónico no es
+                            válido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="pt-2">
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" formControlName="password" matInput autocomplete="off" minlength="6"
+                            placeholder="******" />
+                        <mat-error *ngIf="form.controls['password'].hasError('required')">La contraseña es
+                            requerida</mat-error>
+                        <mat-error *ngIf="form.controls['password'].hasError('minlength')">La contraseña debe tener al
+                            menos 6 caracteres</mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions class="pt-2 justify-center">
+                    <div>
+                        <button type="submit" mat-raised-button color="primary" class="w-1/2 mb-4 p-1"
+                            [disabled]="form.invalid">
+                            Iniciar Sesión
+                        </button>
+                        <a mat-button color="primary" [routerLink]="['/register']">¿No tienes una cuenta? Registrate</a>
+                    </div>
+
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+</div>

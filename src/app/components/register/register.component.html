@@ -1,0 +1,136 @@
+<div class="container grid grid-cols-5 min-h-full mx-auto justify-center items-center h-screen ">
+        <form [formGroup]="form" (ngSubmit)="register()" class=" col-start-2 col-span-3">
+            <mat-card class="text-center p-6">
+                <mat-card-header>
+                    <h1 class="text-lg font-semibold">Registrarse</h1>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="grid grid-cols-2 gap-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nombre</mat-label>
+                            <input formControlName="name" matInput name="name" autocomplete="off" type="text"
+                                placeholder="Example" />
+                            <mat-error *ngIf="form.controls['name'].hasError('required')">
+                                El nombre es <strong> requerido.</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['name'].hasError('minlength')">El nombre debe tener mínimo 2
+                                caracteres.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Apellido</mat-label>
+                            <input formControlName="first_name" matInput name="first_name" autocomplete="off"
+                                type="text" placeholder="Example" />
+                            <mat-error *ngIf="form.controls['first_name'].hasError('required')">
+                                El apellido es <strong> requerido.</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['first_name'].hasError('minlength')">El apellido debe tener
+                                mínimo 2 caracteres.</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Segundo Apellido</mat-label>
+                            <input formControlName="last_name" matInput name="last_name" autocomplete="off" type="text"
+                                placeholder="Example" />
+                            <mat-error *ngIf="form.controls['last_name'].hasError('required')">
+                                El segundo apellido es <strong> requerido.</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['last_name'].hasError('minlength')">El segundo apellido debe
+                                tener mínimo 2 caracteres.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input formControlName="email" matInput name="email" autocomplete="off"
+                                placeholder="example@mail.com" />
+                            <mat-error *ngIf="form.controls['email'].hasError('required')">
+                                El folio es <strong> requerido </strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['email'].hasError('email')">El correo electrónico no es
+                                válido</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3">
+
+                        <mat-form-field>
+                            <mat-label>Teléfono</mat-label>
+                      
+                            <input
+                              pattern="^[0-9]*$"
+                              formControlName="phone"
+                              matInput
+                              type="text"
+                              maxlength="10"
+                              minlength="10"
+                            />
+                            <mat-error *ngIf="form.controls['phone'].hasError('required')">
+                              El teléfono es <strong> requerido </strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['phone'].hasError('minlength')">
+                              El teléfono debe tener mínimo <strong> 10 dígitos </strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.controls['phone'].hasError('pattern')">
+                              El teléfono debe tener solo <strong> números </strong>
+                            </mat-error>
+                      
+                            <mat-icon matSuffix>phone</mat-icon>
+                          </mat-form-field>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                    
+                    <mat-form-field appearance="fill" class="pt-2">
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" formControlName="password" matInput autocomplete="off" minlength="6"
+                            placeholder="******" />
+                        <mat-error *ngIf="form.controls['password'].hasError('required')">La contraseña es
+                            requerida</mat-error>
+                        <mat-error *ngIf="form.controls['password'].hasError('minlength')">La contraseña debe tener al
+                            menos 6 caracteres</mat-error>
+                    </mat-form-field>
+                                        
+                    <mat-form-field appearance="fill" class="pt-2">
+                        <mat-label>Comprobar Contraseña</mat-label>
+                        <input type="password" formControlName="password_check" matInput autocomplete="off" minlength="6"
+                            placeholder="******" />
+                        <mat-error *ngIf="form.controls['password_check'].hasError('required')">La comprobación de contraseña es
+                            requerida</mat-error>
+                        <mat-error *ngIf="form.controls['password_check'].hasError('minlength')">La contraseña debe tener al
+                            menos 6 caracteres</mat-error>
+                            <mat-error *ngIf="form.hasError('passwordNoMatch')">Las contraseñas no coinciden.</mat-error>
+                    </mat-form-field>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <mat-form-field>
+                            <mat-label>Perfil</mat-label>
+                            <mat-select formControlName="id_profile" name="profile">
+                              <mat-option [value]="option.id" *ngFor="let option of profiles">{{
+                                option.profile
+                              }}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.controls['id_profile'].hasError('required')">
+                                El perfil es <strong> requerido </strong>
+                              </mat-error>
+                          </mat-form-field>
+                          <mat-form-field>
+                            <mat-label>Género</mat-label>
+                            <mat-select formControlName="id_gender" name="gender">
+                              <mat-option [value]="option.id" *ngFor="let option of genders">{{
+                                option.gender
+                              }}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.controls['id_gender'].hasError('required')">
+                                El género es <strong> requerido </strong>
+                              </mat-error>
+                          </mat-form-field>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions class="pt-2 justify-center">
+                        <button type="submit" mat-raised-button color="primary" class="w-1/2 mb-4 p-1"
+                            [disabled]="form.invalid">
+                            Registrarse
+                        </button>
+
+                </mat-card-actions>
+            </mat-card>
+        </form>
+</div>

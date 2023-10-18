@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: rgb(222, 222, 222);
+  cursor: default;
+}
+
+.mat-mdc-card.mat-elevation-z6 {
+  @include mat.elevation(6);
+}
+
+.mat-mdc-card.mat-elevation-z8 {
+  @include mat.elevation(8);
+}
+
+.mat-mdc-card.mat-elevation-z10 {
+  @include mat.elevation(10);
+}
