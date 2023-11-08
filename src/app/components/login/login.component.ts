@@ -32,7 +32,8 @@ export class LoginComponent {
       .loginRequest(this.form.value, this.route)
       .subscribe((res: Res) => {
         if (!res.error) {
-          sessionStorage.setItem("token", res.token ?? '');
+          
+          sessionStorage.setItem("token", res.msg.token ?? '');
           this.router.navigate(["/dashboard"]);
         } else {
           this.form.controls["password"].reset();

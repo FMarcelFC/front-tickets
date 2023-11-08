@@ -19,7 +19,6 @@ export class DashboardComponent implements AfterViewInit {
   ) {
     let token = sessionStorage.getItem('token') ?? 'No token available';
     this.user = jwt_decode(token);
-    console.log(this.user);
   }
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 1200px)']).subscribe((res: any) => {

@@ -11,9 +11,9 @@ import { Profile } from 'src/app/interfaces/profile';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent {
   form: FormGroup;
-  private route: String = "/create_user";
+  private route: String = "/user";
   public profiles!: Profile[];
   public genders = [{
     id: 1,
@@ -49,47 +49,22 @@ export class RegisterComponent implements OnInit{
         Validators.pattern('^[0-9]*$'),
       ]],
       picture: ["example.jpg", Validators.required],
-      id_profile: ["", Validators.required],
+      id_profile: [3, Validators.required],
       id_gender: ["", Validators.required],
     }, { validators: confirmPasswordValidator });
-  }
-  ngOnInit(): void {
-      this.getMenus();
   }
   register() {
     this.mainService
       .postRequest(this.form.value, this.route)
       .subscribe((res: Res) => {
+        this.snackbar.open(`${res.msg}`, "Aceptar", {
+          duration: 4000,
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        });
         if (!res.error) {
-          this.snackbar.open(`Se ha registrado tu usuario, debe ser aceptado por uno de los administradores para poder ingresar al sistema.`, "Aceptar", {
-            duration: 4000,
-            horizontalPosition: "center",
-            verticalPosition: "top",
-          });
-        } else {
-          this.snackbar.open(`${res.msg}`, "Aceptar", {
-            duration: 4000,
-            horizontalPosition: "center",
-            verticalPosition: "top",
-          });
+          this.router.navigate(["/login"]);
         }
       });
-  }
-
-  getMenus() {
-    this.mainService
-      .getRequest({}, '/get_profiles')
-      .subscribe((res: Res) => {
-        if (!res.error) {
-          this.profiles = res.msg;
-        } else {
-          this.snackbar.open(`${res.msg}`, "Aceptar", {
-            duration: 4000,
-            horizontalPosition: "center",
-            verticalPosition: "top",
-          });
-        }
-      });
-
   }
 }

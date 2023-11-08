@@ -50,7 +50,7 @@
                         </mat-form-field>
                     </div>
 
-                    <div class="grid grid-cols-1 gap-3">
+                    <div class="grid grid-cols-2 gap-3">
 
                         <mat-form-field>
                             <mat-label>Teléfono</mat-label>
@@ -74,6 +74,17 @@
                             </mat-error>
                       
                             <mat-icon matSuffix>phone</mat-icon>
+                          </mat-form-field>
+                          <mat-form-field>
+                            <mat-label>Género</mat-label>
+                            <mat-select formControlName="id_gender" name="gender">
+                              <mat-option [value]="option.id" *ngFor="let option of genders">{{
+                                option.gender
+                              }}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.controls['id_gender'].hasError('required')">
+                                El género es <strong> requerido </strong>
+                              </mat-error>
                           </mat-form-field>
                     </div>
                     <div class="grid grid-cols-2 gap-3">
@@ -99,30 +110,7 @@
                             <mat-error *ngIf="form.hasError('passwordNoMatch')">Las contraseñas no coinciden.</mat-error>
                     </mat-form-field>
                     </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <mat-form-field>
-                            <mat-label>Perfil</mat-label>
-                            <mat-select formControlName="id_profile" name="profile">
-                              <mat-option [value]="option.id" *ngFor="let option of profiles">{{
-                                option.profile
-                              }}</mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="form.controls['id_profile'].hasError('required')">
-                                El perfil es <strong> requerido </strong>
-                              </mat-error>
-                          </mat-form-field>
-                          <mat-form-field>
-                            <mat-label>Género</mat-label>
-                            <mat-select formControlName="id_gender" name="gender">
-                              <mat-option [value]="option.id" *ngFor="let option of genders">{{
-                                option.gender
-                              }}</mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="form.controls['id_gender'].hasError('required')">
-                                El género es <strong> requerido </strong>
-                              </mat-error>
-                          </mat-form-field>
-                    </div>
+        
                 </mat-card-content>
                 <mat-card-actions class="pt-2 justify-center">
                         <button type="submit" mat-raised-button color="primary" class="w-1/2 mb-4 p-1"

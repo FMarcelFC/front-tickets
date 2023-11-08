@@ -5,13 +5,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { TicketDialogComponent } from './ticket/ticket-dialog/ticket-dialog.component';
 
 
 
 @NgModule({
   declarations: [
     TicketComponent,
-    ProfileComponent
+    ProfileComponent,
+    TicketDialogComponent
   ],
   imports: [
     CommonModule,
