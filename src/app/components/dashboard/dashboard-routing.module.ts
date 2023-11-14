@@ -9,7 +9,12 @@ const routes: Routes = [
       component: DashboardComponent,
       children: [
         { path: '', pathMatch: 'full', redirectTo: 'home' },
-        { path: 'home', component: TicketComponent }
+        { path: 'home', component: TicketComponent },
+        { path: 'profile', component: TicketComponent },
+        { path: 'tickets', component: TicketComponent },
+        { path: 'reports', component: TicketComponent }
+
+
       ],
     },
   ];

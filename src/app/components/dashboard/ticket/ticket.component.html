@@ -2,14 +2,19 @@
     <div class="grid-rows-1 text-center">
         <h2 class="font-semibold">Tickets</h2>
     </div>
-    <div class="grid grid-rows-1 grid-cols-2 gap-5">
+    <div class="grid grid-rows-1 grid-cols-3 gap-5">
         <div class="grid col-span-1 w-2/4">
             <mat-form-field appearance="fill" [hidden]="!(this.dataSource.data!.length > 0)">
                 <mat-label>Buscar</mat-label>
                 <input matInput (keyup)="applyFilter($event)" #input />
             </mat-form-field>
         </div>
-
+        <div class="grid col-span-1 justify-center">
+            <mat-chip-listbox aria-label="Fish selection">
+                <mat-chip-option [selected]="chip2" (click)="switchChips()">Your Tickets</mat-chip-option>
+                <mat-chip-option [selected]="chip1" (click)="switchChips()">All Tickets</mat-chip-option>
+              </mat-chip-listbox>
+        </div>
         <div class="col-span-1 text-end">
             <!-- <button mat-raised-button class="mr-2 csv-button" color="accent" (click)="getCSVMes()">
             <mat-icon>save_alt</mat-icon> Descargar Excel

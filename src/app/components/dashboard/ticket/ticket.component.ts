@@ -9,6 +9,7 @@ import { Ticket } from 'src/app/interfaces/ticket';
 import { MainService } from 'src/app/services/main.service';
 import Swal from 'sweetalert2';
 import { TicketDialogComponent } from './ticket-dialog/ticket-dialog.component';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-ticket',
@@ -17,8 +18,14 @@ import { TicketDialogComponent } from './ticket-dialog/ticket-dialog.component';
 })
 export class TicketComponent implements OnInit {
   private route = '/ticket';
+  private filter = '/get_dev_tickets';
+  private params!: any;
+  private user : any;
   public displayedColumns = ['user', 'status','severity', 'start_date', 'end_date', 'module', 'last_update', 'category'];
   public dataSource = new MatTableDataSource<Ticket>();
+  public chip1 = false;
+  public chip2 = true;
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(
@@ -26,13 +33,17 @@ export class TicketComponent implements OnInit {
     private snackbar: MatSnackBar,
     public dialog: MatDialog
   ) {
+    let token = sessionStorage.getItem('token') ?? 'No token available';
+    this.user = jwt_decode(token);
+    this.params = {id : this.user.id}
   }
   ngOnInit(): void {
     this.getTickets();
   }
+  
   getTickets() {
     this.mainService
-      .getRequest({}, `${this.route}/get_tickets`)
+      .getRequest(this.params, `${this.route}${this.filter}`)
       .subscribe((res: Res) => {
         console.log(res);
         if (res.error) {
@@ -123,5 +134,18 @@ export class TicketComponent implements OnInit {
         );
       }
     });
+  }
+  switchChips() {
+    this.chip1 = !this.chip1;
+    this.chip2 = !this.chip2;
+    if (this.chip1) {
+      this.filter = '/get_tickets'
+      this.params = {};
+    } else {
+      this.filter = '/get_dev_tickets'
+      this.params = { id : this.user.id }
+
+    }
+    this.getTickets();
   }
 }
