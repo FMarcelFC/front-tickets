@@ -1,0 +1,118 @@
+<h1 mat-dialog-title class="text-center">Actualizar Usuario</h1>
+<form [formGroup]="form">
+  <mat-dialog-content mat-dialog-center class="p-5">
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid xl:grid-cols-3 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            formControlName="name"
+            oninput="this.value = this.value.toUpperCase()"
+            matInput
+            type="text"
+          />
+          <mat-error *ngIf="form.controls['name'].hasError('required')">
+            The name is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input
+            formControlName="first_name"
+            oninput="this.value = this.value.toUpperCase()"
+            matInput
+            type="text"
+          />
+          <mat-error *ngIf="form.controls['first_name'].hasError('required')">
+            The first name is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            formControlName="last_name"
+            oninput="this.value = this.value.toUpperCase()"
+            matInput
+            type="text"
+          />
+          <mat-error *ngIf="form.controls['last_name'].hasError('required')">
+            The last name is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid xl:grid-cols-2 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            oninput="this.value = this.value.toUpperCase()"
+            matInput
+            type="text"
+          />
+          <mat-error *ngIf="form.controls['email'].hasError('required')">
+            The email is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input
+            formControlName="password"
+            oninput="this.value = this.value.toUpperCase()"
+            matInput
+            type="text"
+          />
+          <mat-error *ngIf="form.controls['password'].hasError('required')">
+            The password is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="text-center grid grid-rows-1 pt-3">
+      <div class="grid xl:grid-cols-2 gap-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Phone</mat-label>
+          <input
+            pattern="^[0-9]*$"
+            formControlName="phone"
+            matInput
+            type="text"
+            maxlength="10"
+            minlength="10"
+          />
+          <mat-error *ngIf="form.controls['phone'].hasError('required')">
+            The phone is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="id_gender" name="id_gender">
+            <mat-option [value]="option.id" *ngFor="let option of gender">{{
+              option.value
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['id_gender'].hasError('required')">
+            The gender is <strong> required </strong>
+          </mat-error>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+        mat-button
+        [disabled]="form.invalid"
+        (click)="onAdd()"
+      >
+        Actualizar
+      </button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,10 @@
+<mat-grid-list cols="2" [rowHeight]="200">
+  <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let item of menu"> 
+    <mat-card class="dashboard-card mat-elevation-z6 cursor-pointer" (click)="openNav(item.page)">
+      <mat-card-header>
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-subtitle>Go to {{item.name}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

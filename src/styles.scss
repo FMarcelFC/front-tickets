@@ -15,10 +15,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mat-mdc-row:hover .mat-mdc-cell {
-  background-color: rgb(222, 222, 222);
-  cursor: pointer;
-}
 
 .mat-mdc-card.mat-elevation-z6 {
   @include mat.elevation(6);

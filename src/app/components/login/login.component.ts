@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Res } from 'src/app/interfaces/response';
 import { AuthService } from 'src/app/services/auth.service';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   form: FormGroup;
   private route: String = "/login";
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,

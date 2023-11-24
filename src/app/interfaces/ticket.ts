@@ -9,6 +9,7 @@ export interface Ticket {
     id_status:   number;
     id_category: number;
     id_severity: number;
+    issue:      string;
     start_date:  Date;
     end_date:    Date;
     last_update: Date;

@@ -47,6 +47,16 @@
         </div>
       </div>
       <div class="text-center grid grid-rows-1 pt-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Issue</mat-label>
+          <textarea
+            oninput="this.value = this.value.toUpperCase()"
+            matInput
+            formControlName="issue"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="text-center grid grid-rows-1 pt-3">
         <div class="grid xl:grid-cols-2 gap-3">
           <mat-form-field appearance="fill">
             <mat-label>Severity</mat-label>

@@ -1,0 +1,21 @@
+<div class="container mx-auto p-10">
+  <div class="grid-rows-1 text-center">
+    <h2 class="font-semibold">Register Your Tickets</h2>
+  </div>
+  <div class="grid grid-rows-1" >
+    <form [formGroup]="form" *ngIf="loaded">
+        <mat-stepper [linear]="false" #stepper>
+            <mat-step required>
+                <ng-template matStepLabel>Select the category of your issue</ng-template>
+            </mat-step>
+            <mat-step required>
+                <ng-template matStepLabel>Select the system where you are having the issue</ng-template>
+            </mat-step>
+            <mat-step required>
+                <ng-template matStepLabel>Select the severity of your issue</ng-template>
+            </mat-step>
+        </mat-stepper>
+      </form>
+  </div>
+  
+</div>

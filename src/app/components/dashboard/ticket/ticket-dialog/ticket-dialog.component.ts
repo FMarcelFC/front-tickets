@@ -65,13 +65,14 @@ export class TicketDialogComponent implements OnInit{
         id_status: [this.data.id_status],
         id_category: [this.data.id_category],
         id_severity: [this.data.id_severity, Validators.required],
+        issue: [this.data.issue, Validators.required],
         start_date: [this.data.start_date, Validators.required],
         end_date: [this.data.end_date],
         last_update: [moment().format("YYYY-MM-DD h:mm:ss")],
         id_dev: [this.data.id_dev, Validators.required],
         id_user: [this.data.id_user, Validators.required],
         created_at: [this.data.created_at],
-        id_system: [this.data.id_system],
+        id_system: [this.data.id_system, Validators.required],
         summary: [this.data.summary],
       });
     } else {
@@ -81,12 +82,13 @@ export class TicketDialogComponent implements OnInit{
         id_status: [1],
         id_category: [""],
         id_severity: ["", Validators.required],
-        start_date: [null, Validators.required],
+        issue: ["", Validators.required],
+        start_date: [null],
         end_date: [null],
         last_update: [null],
-        id_dev: ["", Validators.required],
+        id_dev: ["202311200938305UlWKWP43ydprukqPc", Validators.required],
         id_user: [this.user.id, Validators.required],
-        id_system: [""],
+        id_system: ["", Validators.required],
         summary: [""],
       });
     }
